@@ -1,0 +1,20 @@
+@CHARSET "ISO-8859-1";
+
+.topbar{
+	position: fixed;
+	top:0px;
+	background-color: lightgoldenrodyellow;
+	width: 70%;
+	border-top: 3px solid #F48024;
+	height: 60px;	
+	margin-left:10%;
+	margin-right:10%
+}
+.menulist{
+	/* border-style:dashed; */
+	height:100%;
+	width:150px;
+}
+.menulistitem{
+	text-decoration:none;
+}
