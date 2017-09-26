@@ -13,7 +13,7 @@
 	<div style="margin:10%;margin-top:100px;">
 		<h3 >Log into your account</h3>
 		<form action=Login method=get>
-		<label>User Name</label>
+		<label>User Name </label>
 		<input type=text name=uname><br><br>
 		<label>Password</label>
 		<input type=password name=psw><br><br>
