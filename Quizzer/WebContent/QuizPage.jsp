@@ -10,7 +10,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-<script type="text/javascript" src="js/src_QuizPage.js?v=2"></script>
+<script type="text/javascript" src="js/src_QuizPage.js?v=11"></script>
 <title>TECHNO-CRUNCH</title>
 </head>
 <body>

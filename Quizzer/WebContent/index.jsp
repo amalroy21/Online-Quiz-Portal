@@ -6,6 +6,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>TECHNO-CRUNCH</title>
 </head>
+<% 
+	String userValidity=request.getParameter("valid");
+	if("false".equalsIgnoreCase(userValidity)){
+		%>
+		<script>alert("Invalid Credentials!");</script>
+		<%
+	}
+%>
 <body>
 	<div id="header">
 	    <jsp:include page="common/header.jsp"/>
@@ -17,9 +25,9 @@
 		<input type=text name=uname><br><br>
 		<label>Password</label>
 		<input type=password name=psw><br><br>
-		<select name=desig>
-				<option value=user selected>Student</option>
-				<option value=admin>Recruiter</option>
+		<select name=role>
+				<option value=Candidate selected>Candidate</option>
+				<option value=Company>Company</option>
 			</select><br><br>
 		<input type=submit value="Login" />
 		</form>

@@ -6,12 +6,15 @@ var timer=600;
 var min=0;
 var sec=0;
 var jsonQuestionObj=new Object();
-var max_questions=15;
+var max_questions=5;
 var questionCounter=0;
+var qlevel=1;
+var compid=1;
 
 $(document).ready(function () {
 	
 	startTimer();
+	
 });
 
 function populateQuestions(list_questions){
@@ -42,13 +45,13 @@ function displayQuiz(question_no){
 				$('#submit').val("Finish");
 			}
 			document.getElementById("no_qn").innerHTML = "<b> Question no </b>"+question_no+"/"+maxQns;
+			
 	}else{
 		showscore();
 	}
 }
 
 function checkSolution(){
-	
 	
 	var opt=$("input[name='a']:checked"). val();
 	var ans=$('#correctAns').val();
@@ -86,9 +89,21 @@ function showscore(){
 	score[0]=0;
 	score.forEach(function(x){
 		i++;
-		//result+=i+"_"+x+"||";
 		result+=x;
 	});
+	var msg="Succesfull completion!";
+	 $.ajax({
+         type: "POST",
+         url: "ResultController", 
+         data: {score:result,qnlevel:qlevel,companyid:compid,total:max_questions},
+         success: function(msg){
+
+             alert(msg);
+         },
+         error: function(){
+             alert("Quiz was not completed successfully.");
+         }
+     });
 	
 	window.location="Result.jsp?score="+result;
 }
