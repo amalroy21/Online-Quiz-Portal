@@ -11,13 +11,13 @@
 </head>
 <body>
 <div id="header">
-    <jsp:include page="common/header.jsp"/>
+    <jsp:include page="common/companyHeader.jsp"/>
 </div>
 <div style="margin:10%;margin-top:100px;">
 <table border="1" style="width:30%" cellpadding="5">
 <thead>
     <tr>
-        <th colspan="1">Company ID</th>
+        <th colspan="1">Student ID</th>
     	<th colspan="1">Question Level</th>
     	<th colspan="1">Score</th>
     	<th colspan="1">Max_Marks</th>
@@ -27,21 +27,21 @@
     
 <% 
 session=request.getSession();
-String companyname="";
+String candidatename="";
 if(session!=null){
 	Object ob=session.getAttribute("id");
 	if(ob!=null){
-		int candidateid=(int)ob;  
-		if(candidateid>0){
+		int companyID=(int)ob;  
+		if(companyID>0){
 			ArrayList<QuizResults> qz_results=new ArrayList<QuizResults>();
 			DBA db=new DBA();
-			qz_results=db.getResults(candidateid,"candidate");
+			qz_results=db.getResults(companyID,"company");
 			if(qz_results!=null && qz_results.size()>0){
 				for(QuizResults rs:qz_results){
-					companyname=db.getCompanyName(rs.getCompanyid());
+					candidatename=db.getCandidateName(rs.getCandidateid());
 					%>
 					<tr>
-				        <td><%=companyname   %></td>
+				        <td><%=candidatename %></td>
 				        <td><%=rs.getQlevel()%></td>
 				        <td><%=rs.getScore() %></td>
 				        <td><%=rs.getTotal() %></td>

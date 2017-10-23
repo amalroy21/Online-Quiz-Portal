@@ -74,6 +74,46 @@ public class DBA {
 		
 	}
 	
+	public boolean insertQuestion(Question qn){
+		boolean status=false;
+		int flag=-1;
+		int token=0;
+		try {
+			st=con.createStatement();
+			ResultSet rs=st.executeQuery("select max(token) from Questionbank");
+			
+			while(rs.next())
+			{
+				token=rs.getInt(1)+1;
+			}
+			st.close();
+			
+			
+			String sql="insert into Questionbank(token, question,optiona, optionb, optionc, optiond, answer, qntype,qnlevel) "
+					+ "values (?,?,?,?,?,?,?,?,?)";
+			PreparedStatement stmt=con.prepareStatement(sql);
+			stmt.setInt(1, token);
+			stmt.setString(2, qn.getQuestion());
+			stmt.setString(3, qn.getOptionA());
+			stmt.setString(4, qn.getOptionB());
+			stmt.setString(5, qn.getOptionC());
+			stmt.setString(6, qn.getOptionD());
+			stmt.setString(7, qn.getAnswer());
+			stmt.setString(8, qn.getQnType());
+			stmt.setString(9, qn.getQnLevel());
+			
+			flag=stmt.executeUpdate();
+			if(flag>0){
+				status=true;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return status;
+	}
+	
 	public boolean createNewUser(String fname, String lname, String email,String user,String pwd,String role){
 		boolean status=false;
 		int flag=-1;
@@ -224,6 +264,10 @@ public class DBA {
 			st.close();
 			if(flag==true && "candidate".equalsIgnoreCase(role)){
 				id=getCandidate(email);
+			}else{
+				if("company".equalsIgnoreCase(role)){
+					id=getCompany(email);
+				}
 			}
 		
 		} catch (SQLException e) {
@@ -234,7 +278,7 @@ public class DBA {
 		return id;
 	}
 	
-	public ArrayList<QuizResults> getResults(int candidateid){
+	public ArrayList<QuizResults> getResults(int candidateid,String role){
 		int id=-1;
 		
 		ArrayList<QuizResults> QrsList=new ArrayList<QuizResults>();
@@ -244,8 +288,12 @@ public class DBA {
 			st=con.createStatement();
 			StringBuffer sql=new StringBuffer();
 			sql.append("select * from quizresults where");
-			sql.append(" candidateid='"+candidateid+"'");
 			
+			if("company".equalsIgnoreCase(role)){
+				sql.append(" companyid='"+candidateid+"'");
+			}else{
+				sql.append(" candidateid='"+candidateid+"'");
+			}
 			ResultSet rs=st.executeQuery(sql.toString());
 			
 			while(rs.next())
@@ -297,5 +345,78 @@ public class DBA {
 		
 		return id;
 	}
+	
+	public int getCompany(String email){
+			
+			int id=-1;
+			try{
+				st=con.createStatement();
+				StringBuffer sql=new StringBuffer();
+				sql.append("select id from company where");
+				sql.append(" email='"+email+"'");
+				ResultSet rs=st.executeQuery(sql.toString());
+				
+				while(rs.next())
+				{
+					id=rs.getInt(1);
+				}
+				st.close();
+			
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			return id;
+		}
+	
+	public String getCompanyName(int id){
+		
+		String name="";
+		try{
+			st=con.createStatement();
+			StringBuffer sql=new StringBuffer();
+			sql.append("select name from company where");
+			sql.append(" id='"+id+"'");
+			ResultSet rs=st.executeQuery(sql.toString());
+			
+			while(rs.next())
+			{
+				name=rs.getString(1);
+			}
+			st.close();
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return name;
+	}
+	
+	public String getCandidateName(int id){
+		
+		String name="";
+		try{
+			st=con.createStatement();
+			StringBuffer sql=new StringBuffer();
+			sql.append("select name from candidate where");
+			sql.append(" id='"+id+"'");
+			ResultSet rs=st.executeQuery(sql.toString());
+			
+			while(rs.next())
+			{
+				name=rs.getString(1);
+			}
+			st.close();
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return name;
+	}
+	
 	
 }

@@ -49,10 +49,11 @@ public class Login extends HttpServlet {
 		int id=-1;
 		id=DB.getUser(username, password, role);
 		sh.setAttribute("id", id);
+		System.out.println("id="+id);
 		if(id==-1){
 			response.sendRedirect("index.jsp?valid=false");
 		}else if("company".equalsIgnoreCase(role)){
-			response.sendRedirect("adminHome.jsp");
+			response.sendRedirect("companyHome.jsp");
 		}else{
 			response.sendRedirect("userHome.jsp");
 		}

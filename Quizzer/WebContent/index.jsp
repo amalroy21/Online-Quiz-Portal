@@ -26,8 +26,8 @@
 		<label>Password</label>
 		<input type=password name=psw><br><br>
 		<select name=role>
-				<option value=Candidate selected>Candidate</option>
-				<option value=Company>Company</option>
+				<option value=candidate selected>Candidate</option>
+				<option value=company>Company</option>
 			</select><br><br>
 		<input type=submit value="Login" />
 		</form>

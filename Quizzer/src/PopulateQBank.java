@@ -3,11 +3,16 @@
 import java.io.IOException;
 import java.io.PrintWriter;
  
+
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import Domain.Question;
+import SQL.DBA;
  
 @WebServlet("/PopulateQBank")
 public class PopulateQBank extends HttpServlet {
@@ -22,7 +27,24 @@ public class PopulateQBank extends HttpServlet {
         String optionC = request.getParameter("QC");
         String optionD = request.getParameter("QD");
         String correctAnswer = request.getParameter("correctAns");
-         
+        String qLevel = request.getParameter("level");
+        
+        Question questionObj=new Question();
+        
+        questionObj.setQuestion(question);
+        questionObj.setOptionA(optionA);
+        questionObj.setOptionB(optionB);
+        questionObj.setOptionC(optionC);
+        questionObj.setOptionD(optionD);
+        questionObj.setAnswer(correctAnswer);
+        questionObj.setQnLevel(qLevel);
+        questionObj.setQnType("MC");
+        
+        DBA db =new DBA();
+        
+        boolean flag=false;
+        flag=db.insertQuestion(questionObj);
+        
         System.out.println("Question: " + question);
         System.out.println("Option A: " + optionA);
         System.out.println("Option B: " + optionB);
@@ -32,10 +54,10 @@ public class PopulateQBank extends HttpServlet {
         // do some processing here...
          
         // get response writer
-        PrintWriter writer = response.getWriter();
+        //PrintWriter writer = response.getWriter();
          
         // build HTML code
-        String htmlRespone = "<html>";
+        /*String htmlRespone = "<html>";
         htmlRespone += "<body><p>Question: " + question + "</p>";
         htmlRespone += "<p>Option A: " + optionA + "</p>";
         htmlRespone += "<p>Option B: " + optionB + "</p>";
@@ -45,7 +67,10 @@ public class PopulateQBank extends HttpServlet {
         htmlRespone += "</html>";
          
         // return response
-        writer.println(htmlRespone);
+        
+        writer.println(htmlRespone);*/
+        response.sendRedirect("QuestionSubmitSuccess.jsp");
+        
          
     }
  
