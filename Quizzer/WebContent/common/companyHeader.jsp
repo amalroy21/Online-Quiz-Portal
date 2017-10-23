@@ -15,8 +15,7 @@
     	response.sendRedirect("index.jsp");
     	System.out.print("here="+response);
 	}else{
-    	
-    	id=Integer.parseInt((String)ob);
+	   	//id=Integer.parseInt((String)ob);
     	
     }
 %>
@@ -31,9 +30,9 @@
 		<div class="menulist" style="display:inline-block">
 			<a href="viewStudentResults.jsp" class="menulistitem" title="TechnoCrunch" rel="home" >View Student Results</a>
 		</div>
-		<div class="menulist" style="display:inline-block">
+		<%-- <div class="menulist" style="display:inline-block">
 			<p>CompanyID:<%=id %></p>
-		</div>
+		</div> --%>
 		<div class="menulist" style="display:inline-block">
 			<a href="Logout" class="menulistitem" title="TechnoCrunch" rel="home" >Logout</a>
 		</div>

@@ -19,6 +19,10 @@ function validateForm(theForm){
 <body>
 <br>
 <br/>
+<div id="header">
+    <jsp:include page="common/header.jsp"/>
+</div>
+<div style="margin:10%;margin-top:100px;">
 <center>
 
 <table border="1" width="450px" bgcolor="pink" cellspacing="0" cellpadding="0">
@@ -78,5 +82,6 @@ function validateForm(theForm){
   </tr>
 </table>
 </center>
+</div>
 </body>
 </html>

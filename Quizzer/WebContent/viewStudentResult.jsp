@@ -31,7 +31,8 @@ String candidatename="";
 if(session!=null){
 	Object ob=session.getAttribute("id");
 	if(ob!=null){
-		int companyID=(int)ob;  
+		//int companyID=Integer.parseInt((String)ob) ;  
+		int companyID=1;
 		if(companyID>0){
 			ArrayList<QuizResults> qz_results=new ArrayList<QuizResults>();
 			DBA db=new DBA();
