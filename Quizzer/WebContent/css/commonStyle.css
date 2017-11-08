@@ -1,0 +1,49 @@
+@CHARSET "ISO-8859-1";
+
+.leftSideBarParent {
+    width: 18%;
+    float: left;
+    margin: 24px 0;
+    margin-left: 10px;
+    position: relative;
+}
+
+.leftSideBar table {
+    width: 100%;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.leftSideBar .quickLink_S table td a {
+    color: #4b4b4b;
+}
+
+.wrapper a:visited {
+    color: #EC4E20;
+}
+
+a {
+    outline: none;
+    color: #060;
+    text-decoration: none;
+}
+
+.leftSideBar .quickLink_S table td {
+    border: 1px solid #868686;
+    background-color: #e0e0e0;
+    padding: 10px;
+    font-size: 13px;
+}
+
+.leftSideBar .quickLink-header_S {
+    border: 1px solid #868686!important;
+    background-color: #868686!important;
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+    padding: 10px;
+    font-weight: 700;
+}
