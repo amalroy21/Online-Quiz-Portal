@@ -10,10 +10,10 @@
 <title>View Results</title>
 </head>
 <body>
-<div id="header">
-    <jsp:include page="common/header.jsp"/>
+<div id="leftSideBar">
+    <jsp:include page="leftSideBar.jsp"/>
 </div>
-<div style="margin:10%;margin-top:100px;">
+<div class="content">
 <table border="1" style="width:30%" cellpadding="5">
 <thead>
     <tr>

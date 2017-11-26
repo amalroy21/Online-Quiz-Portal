@@ -7,10 +7,10 @@
 <title>Company Home page</title>
 </head>
 <body>
-	<div id="header">
-	    <jsp:include page="common/companyHeader.jsp"/>
+	<div id=leftSideBar>
+	    <jsp:include page="leftSideBarComp.jsp"/>
 	</div>
-	<div style="margin:10%;margin-top:100px;">
+	<div class="content">
 		<h1><a href="insertQuestion.jsp">Submit Question</a></h1>
 		<h1><a href="viewStudentResult.jsp">Check Student Performance</a></h1>
 	</div>

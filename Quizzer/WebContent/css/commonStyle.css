@@ -1,5 +1,20 @@
 @CHARSET "ISO-8859-1";
 
+body {
+  font-family: "Open Sans", sans-serif;
+  height: 100vh;
+  background: url("../image/bg2.jpg") 50% fixed;
+  background-size: cover;
+  background-color: rgba(4, 40, 68, 0.85);
+}
+
+.content{
+	margin-left:20%;
+	background-color: whitesmoke;
+	margin-top:100px;
+	width:fit-content;
+}
+
 .leftSideBarParent {
     width: 18%;
     float: left;

@@ -11,14 +11,7 @@ public class Question {
 	private String QnType;
 	private String QnLevel;
 	private int QuestionNo;
-	
-	public int getQuestionNo() {
-		return QuestionNo;
-	}
-
-	public void setQuestionNo(int questionNo) {
-		QuestionNo = questionNo;
-	}
+	private int companyId;
 
 	public Question() {
 		super();
@@ -31,6 +24,15 @@ public class Question {
 		QnType   = "";
 		QnLevel  = "";
 		QuestionNo=0;
+		companyId=0;
+	}
+	
+	public int getQuestionNo() {
+		return QuestionNo;
+	}
+
+	public void setQuestionNo(int questionNo) {
+		QuestionNo = questionNo;
 	}
 
 	public String getQuestion() {
@@ -95,6 +97,14 @@ public class Question {
 
 	public void setQnLevel(String qnLevel) {
 		QnLevel = qnLevel;
+	}
+
+	public int getCompanyId() {
+		return companyId;
+	}
+
+	public void setCompanyId(int companyId) {
+		this.companyId = companyId;
 	}
 	
 }

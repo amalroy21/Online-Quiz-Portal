@@ -8,10 +8,10 @@
 </head>
 <body>
 	
-	<div id="header">
-	    <jsp:include page="common/header.jsp"/>
+	<div id="leftSideBar">
+	    <jsp:include page="leftSideBarComp.jsp"/>
 	</div>
-	<div style="margin:10%;margin-top:100px;">
+	<div class="content">
 		<p>Question was successfully submitted.</p>
 		<br>
 		<br>

@@ -6,6 +6,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>TECHNO-CRUNCH</title>
 </head>
+<link href="css/loginStyle.css" rel="stylesheet" type="text/css">
+<body>
 <% 
 	String userValidity=request.getParameter("valid");
 	if("false".equalsIgnoreCase(userValidity)){
@@ -14,23 +16,28 @@
 		<%
 	}
 %>
-<body>
-	<div id="header">
-	    <jsp:include page="common/header.jsp"/>
-	</div>
-	<div style="margin:10%;margin-top:100px;">
-		<h3 >Log into your account</h3>
-		<form action=Login method=get>
-		<label>User Name </label>
-		<input type=text name=uname><br><br>
-		<label>Password</label>
-		<input type=password name=psw><br><br>
-		<select name=role>
-				<option value=candidate selected>Candidate</option>
-				<option value=company>Company</option>
-			</select><br><br>
-		<input type=submit value="Login" />
+	<div style="" class="wrapper">
+		
+		<form action=Login method=get class="login">
+		<p class="title">Log in</p>
+	    <input name="username" type="text" placeholder="Username" autofocus/>
+	    <i class="fa fa-user"></i>
+	    <input name="password" type="password" placeholder="Password" />
+	    <i class="fa fa-key"></i>
+	    <a href="resetPassword.jsp">Forgot your password?</a>
+    	<select name=role>
+			<option value=candidate selected>Candidate</option>
+			<option value=company>Company</option>
+		</select><br><br>
+	    <button type="submit">
+	      <i class="spinner"></i>
+	      <span class="state">Log in</span>
+	    </button>
+	    	
 		</form>
 	</div>
+	
+  </div>
+	
 </body>
 </html>

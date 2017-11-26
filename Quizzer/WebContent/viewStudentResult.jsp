@@ -10,10 +10,10 @@
 <title>View Results</title>
 </head>
 <body>
-<div id="header">
-    <jsp:include page="common/companyHeader.jsp"/>
+<div id="leftSideBar">
+    <jsp:include page="leftSideBarComp.jsp"/>
 </div>
-<div style="margin:10%;margin-top:100px;">
+<div class="content">
 <table border="1" style="width:30%" cellpadding="5">
 <thead>
     <tr>
@@ -31,8 +31,8 @@ String candidatename="";
 if(session!=null){
 	Object ob=session.getAttribute("id");
 	if(ob!=null){
-		//int companyID=Integer.parseInt((String)ob) ;  
-		int companyID=1;
+		int companyID=(int)ob ;  
+		//int companyID=1;
 		if(companyID>0){
 			ArrayList<QuizResults> qz_results=new ArrayList<QuizResults>();
 			DBA db=new DBA();

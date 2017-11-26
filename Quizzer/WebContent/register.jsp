@@ -6,10 +6,10 @@
         <title>Registration</title>
     </head>
     <body>
-    <div id="header">
-	    <jsp:include page="common/header.jsp"/>
-	</div>
-	<div style="margin:10%;margin-top:100px;">
+    <%--<div id="leftSideBar">
+	     <jsp:include page="leftSideBar.jsp"/>
+	</div> --%>
+	<div class="content">
         <form method="get" action="Registration">
             
             <table border="1" style="width:30%" cellpadding="5">

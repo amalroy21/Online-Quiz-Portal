@@ -8,32 +8,34 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>TECHNO-CRUNCH</title>
 </head>
+<!-- <link href="css/commonStyle.css" rel="stylesheet" type="text/css"> -->
 <body>
-<div id="header">
-    <jsp:include page="common/header.jsp"/>
+<div id="leftbar">
+    <jsp:include page="leftSideBar.jsp"/>
 </div>
-<div style="margin:10%;margin-top:100px;">
-	<form action=QuizHome name="StartQz" onsubmit="return confirm('Are you sure you want to start now');">
-		
-		<span>Please Read the instructions carefully before attempting the quiz.</span>
-		<ol>
-		<li>The quiz consists of 5 multiple choice questions that are worth 1 point each.</li>
-		<li>You have 10 minutes to answer all 5 questions.</li>
-		<li>You must complete the entire quiz in one session as you are not allowed to leave the quiz and then return.</li>
-		<li>To begin with the quiz, click on the "ATTEMPT QUIZ NOW" button.</li>
-		<li>You will be prompted to verify that you are ready to start your quiz. </li>
-		<li>Once you choose "START ATTEMPT' you have 10 minutes total to complete and SUBMIT the quiz for grading.</li>
-		<li>Make sure you answer each question on the page before you click on NEXT; you will not be able to go back. Choosing NEXT automatically saves your answers.</li>
-		</ol>
-		<input type=submit value="Attempt Quiz Now" />
-	</form>
-</div>
-<br>
-<br/>
-<center>
+<div class="content">
+	<center>
+	<form action="ViewCompanyController" method="get" name="companysearch" id="companysearch" >
+        <table><tbody><tr>
+	          <td class="npb"><label for="what" id="what_label_top" >what</label></td>
+	          <td class="npb" colspan="2"><label for="where" id="where_label_top" >where</label></td>
+        </tr>
+	<tr>
+		<td ><span class="inwrap"><input class="input_text" maxlength="512" size="31"  name="compKey"  id="compKey"></span><div style="width:250px"><!-- --></div></td>
+		<td ><span class="inwrap"><input class="input_text" maxlength="64" size="27"  name="locKey"  id="locKey" value=""></span><div style="width:200px"></div></td>
+		<td  style="width:1px"><span class="inwrapBorder" style="width:auto;"><span class="inwrapBorderTop"><input id="fj" type="submit" class="input_submit" value="Find Company"></span></span></td>
+	</tr>
+	<tr valign="baseline">
+		<td class="label"><label for="what" id="what_label_bot" >job title, keywords or company name</label></td>
+		<td class="label"><label for="where" id="where_label_bot" >city, state or zip code</label></td>
+     </tr>
+	 </tbody>
+	 </table>
+	 </form>
+	 </center>	
+	 </div>              	
 
 
-</center>
 </body>
 
 </html>

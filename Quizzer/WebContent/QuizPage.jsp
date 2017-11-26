@@ -14,10 +14,10 @@
 <title>TECHNO-CRUNCH</title>
 </head>
 <body>
-<div id="header">
-    <jsp:include page="common/header.jsp"/>
+<div id="leftSideBar">
+    <jsp:include page="leftSideBar.jsp"/>
 </div>
-<div style="margin:10%;margin-top:100px;">
+<div class="content">
 	<div id="PopQuiz" align="center" style="display:none;">
 		<table border="1" width="500px" bgcolor="blanchedalmond" cellspacing="0" cellpadding="0">
 		  <tr><td width="100%">

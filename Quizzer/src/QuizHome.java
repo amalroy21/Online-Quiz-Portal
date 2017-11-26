@@ -38,14 +38,19 @@ public class QuizHome extends HttpServlet {
 		PrintWriter pw=response.getWriter();
 		ArrayList<Question> Qns=new ArrayList<Question>();
 		DBA db=new DBA();
-		Qns=db.getQuestions();
-		//for(Question q:Qns){
+		Object ob=request.getAttribute("compid");
+		if(ob!=null){
+			int companyId=(int)ob;
+			Qns=db.getQuestions(companyId);
 			request.setAttribute("QuestionBank", Qns);
 			RequestDispatcher rd = request.getRequestDispatcher("QuizPage.jsp");
-			rd.include(request, response); 
-		//}
-		//response.sendRedirect("Result.jsp?answer=Correct");
-		
+			rd.include(request, response);
+			
+		}else{
+			response.sendRedirect(request.getContextPath()+"/index.jsp");
+		}
+		 
+	
 	}
 
 	/**

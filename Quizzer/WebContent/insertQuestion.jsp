@@ -19,10 +19,10 @@ function validateForm(theForm){
 <body>
 <br>
 <br/>
-<div id="header">
-    <jsp:include page="common/header.jsp"/>
+<div id="leftSideBar">
+    <jsp:include page="leftSideBarComp.jsp"/>
 </div>
-<div style="margin:10%;margin-top:100px;">
+<div class="content">
 <center>
 
 <table border="1" width="450px" bgcolor="pink" cellspacing="0" cellpadding="0">

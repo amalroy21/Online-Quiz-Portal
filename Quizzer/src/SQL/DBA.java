@@ -1,6 +1,7 @@
 package SQL;
 
 import SQL.JdbcUtil;
+import Domain.Company;
 import Domain.Question;
 import Domain.QuizResults;
 
@@ -45,13 +46,13 @@ public class DBA {
 		
 	}
 	
-	public ArrayList<Question> getQuestions(){
+	public ArrayList<Question> getQuestions(int companyId){
 		
 		ArrayList<Question> Qn=new ArrayList<Question>();
 		Question quest=null;
 		try {
 			st=con.createStatement();
-			ResultSet rs=st.executeQuery("select * from QUESTIONBANK where rownum<=5");
+			ResultSet rs=st.executeQuery("select * from QUESTIONBANK where rownum<=5 and companyid="+companyId);
 			while(rs.next())
 			{
 				quest=new Question();
@@ -61,6 +62,7 @@ public class DBA {
 				quest.setOptionC(rs.getString(5));
 				quest.setOptionD(rs.getString(6));
 				quest.setAnswer(rs.getString(7));
+				quest.setCompanyId(rs.getInt(8));
 				
 				Qn.add(quest);
 			}
@@ -88,9 +90,8 @@ public class DBA {
 			}
 			st.close();
 			
-			
-			String sql="insert into Questionbank(token, question,optiona, optionb, optionc, optiond, answer, qntype,qnlevel) "
-					+ "values (?,?,?,?,?,?,?,?,?)";
+			String sql="insert into Questionbank(token, question,optiona, optionb, optionc, optiond, answer, qntype,qnlevel,companyid) "
+					+ "values (?,?,?,?,?,?,?,?,?,?)";
 			PreparedStatement stmt=con.prepareStatement(sql);
 			stmt.setInt(1, token);
 			stmt.setString(2, qn.getQuestion());
@@ -101,6 +102,7 @@ public class DBA {
 			stmt.setString(7, qn.getAnswer());
 			stmt.setString(8, qn.getQnType());
 			stmt.setString(9, qn.getQnLevel());
+			stmt.setInt(10, qn.getCompanyId());
 			
 			flag=stmt.executeUpdate();
 			if(flag>0){
@@ -118,8 +120,6 @@ public class DBA {
 		boolean status=false;
 		int flag=-1;
 		try {
-			//insert into userdetails (emailid,firstname,lastname,username,password,user_role,regdate)
-			//values("amal.roy@utdallas.edu","Amal","Roy","amalroy","123456","admin",to_date ('21-OCT-2017','DD-MON-YYYY'));
 			String sql="insert into userdetails(emailid,firstname,lastname,username,password,user_role,regdate) "
 					+ "values (?,?,?,?,?,?,?)";
 			PreparedStatement stmt=con.prepareStatement(sql);
@@ -417,6 +417,125 @@ public class DBA {
 		
 		return name;
 	}
+	
+	public ArrayList<Company> searchCompany(String compKey,String locKey){
+			
+			int flag=0;
+			ArrayList<Company> comp_List=new ArrayList<Company>();
+			try{
+				st=con.createStatement();
+				StringBuffer sql=new StringBuffer();
+				sql.append("select * from company where");
+				if(!"".equals(compKey)){
+					sql.append(" lower(name) like '%"+compKey.toLowerCase()+"%'");
+					flag=1;
+				}
+				if(!"".equals(locKey)){
+					if(flag==1){
+						sql.append(" OR ");
+					}
+					sql.append(" lower(city) like '%"+locKey.toLowerCase()+"%'");
+					sql.append(" OR lower(state) like '%"+locKey.toLowerCase()+"%'");
+					flag=1;
+				}
+				if(flag==1){
+					ResultSet rs=st.executeQuery(sql.toString());
+					
+					while(rs.next())
+					{
+						Company c=new Company();
+						c.setId(rs.getInt(1));
+						c.setName(rs.getString(2));
+						c.setDescription(rs.getString(3));
+						c.setEmail(rs.getString(4));
+						c.setPhone(rs.getString(5));
+						c.setCity(rs.getString(6));
+						c.setState(rs.getString(7));
+						c.setZip(rs.getString(8));
+						System.out.println("Company Name "+c.getName());
+						
+						comp_List.add(c);
+					}
+				}
+				else{
+					comp_List=searchCompanyAll();
+				}
+				st.close();
+			
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			return comp_List;
+		}
+	
+	public ArrayList<Company> searchCompanyAll(){
+		
+		int flag=0;
+		ArrayList<Company> comp_List=new ArrayList<Company>();
+		try{
+			st=con.createStatement();
+			StringBuffer sql=new StringBuffer();
+			sql.append("select * from company where rownum<=10");
+			ResultSet rs=st.executeQuery(sql.toString());
+			
+			while(rs.next())
+			{
+				Company c=new Company();
+				c.setId(rs.getInt(1));
+				c.setName(rs.getString(2));
+				c.setDescription(rs.getString(3));
+				c.setEmail(rs.getString(4));
+				c.setPhone(rs.getString(5));
+				c.setCity(rs.getString(6));
+				c.setState(rs.getString(7));
+				c.setZip(rs.getString(8));
+				System.out.println("Company Name "+c.getName());
+				
+				comp_List.add(c);
+			}
+			st.close();
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return comp_List;
+	}
+	
+	public Company getCompanyDetails(int id){
+			
+			Company c=new Company();
+			
+			try{
+				st=con.createStatement();
+				StringBuffer sql=new StringBuffer();
+				sql.append("select * from company where");
+				sql.append(" id='"+id+"'");
+				ResultSet rs=st.executeQuery(sql.toString());
+				
+				while(rs.next())
+				{
+					c.setId(rs.getInt(1));
+					c.setName(rs.getString(2));
+					c.setDescription(rs.getString(3));
+					c.setEmail(rs.getString(4));
+					c.setPhone(rs.getString(5));
+					c.setCity(rs.getString(6));
+					c.setState(rs.getString(7));
+					c.setZip(rs.getString(8));
+				}
+				st.close();
+			
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			return c;
+		}
 	
 	
 }

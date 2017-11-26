@@ -17,10 +17,10 @@
 		}
 	}
 %>
-<div id="header">
-    <jsp:include page="common/header.jsp"/>
+<div id="leftSideBar">
+    <jsp:include page="leftSideBar.jsp"/>
 </div>
-<div style="margin:10%;margin-top:100px;">
+<div class="content">
 	<h1>Result Page</h1>
 	
 	<span style="display:block;margin:1%;">Passing Score: 3</span>

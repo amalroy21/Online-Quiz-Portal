@@ -39,25 +39,29 @@ public class Login extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html");
 		PrintWriter pw=response.getWriter();
-		String username=request.getParameter("uname");
-		String password=request.getParameter("psw");
+		String username=request.getParameter("username");
+		String password=request.getParameter("password");
 		String role=request.getParameter("role");
 		HttpSession sh=request.getSession();
-		sh.setAttribute("username", username);
 		
 		DBA DB=new DBA();
 		int id=-1;
 		id=DB.getUser(username, password, role);
 		sh.setAttribute("id", id);
 		System.out.println("id="+id);
+		String name="";
 		if(id==-1){
+			sh.setAttribute("username", username);
+			sh.setAttribute("userid",id);
 			response.sendRedirect("index.jsp?valid=false");
 		}else if("company".equalsIgnoreCase(role)){
 			response.sendRedirect("companyHome.jsp");
+			name=DB.getCompanyName(id);
 		}else{
 			response.sendRedirect("userHome.jsp");
+			name=DB.getCandidateName(id);
 		}
-			
+		sh.setAttribute("name", name);
 		
 	}
 
