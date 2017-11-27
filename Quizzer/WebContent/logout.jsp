@@ -1,5 +1,5 @@
 <%
-session.setAttribute("username", null);
-session.invalidate();
+HttpSession sh=request.getSession(false);
+sh.invalidate();
 response.sendRedirect("index.jsp");
 %>

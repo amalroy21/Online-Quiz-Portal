@@ -10,9 +10,11 @@
 	<div id=leftSideBar>
 	    <jsp:include page="leftSideBarComp.jsp"/>
 	</div>
-	<div class="content">
-		<h1><a href="insertQuestion.jsp">Submit Question</a></h1>
-		<h1><a href="viewStudentResult.jsp">Check Student Performance</a></h1>
+	<div class="content" style="float:left">
+	<ul>
+		<li><a href="insertQuestion.jsp">Add Questions to the Question Bank.</a></li>
+		<li><a href="viewStudentResult.jsp">Check Student Performance.</a></li>
+	</ul>
 	</div>
 </body>
 </html>

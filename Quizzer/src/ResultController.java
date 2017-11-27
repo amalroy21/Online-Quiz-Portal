@@ -32,7 +32,7 @@ public class ResultController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.sendRedirect("Result.jsp?score=600");
+		//response.sendRedirect("Result.jsp?score=600");
 	}
 
 	/**
@@ -47,13 +47,18 @@ public class ResultController extends HttpServlet {
 		data="id="+request.getParameter("companyid")+":score="+request.getParameter("score");
 		data+=":level="+request.getParameter("qnlevel")+":total="+request.getParameter("total");
 		System.out.println(data);
-		int companyid=Integer.parseInt(request.getParameter("companyid"));
+		HttpSession sh=request.getSession(false);
+		Object ob=sh.getAttribute("compid");
+		int companyid=0;
+		if(ob!=null){
+			companyid=(int)ob;
+		}
+		
 		int score=Integer.parseInt(request.getParameter("score"));
 		int level=Integer.parseInt(request.getParameter("qnlevel"));
 		int total=Integer.parseInt(request.getParameter("total"));
 		
-		HttpSession session=request.getSession();  
-	    int candidateid=(int) session.getAttribute("id");  
+	    int candidateid=(int) sh.getAttribute("id");  
 		System.out.println("id="+companyid);
 		boolean createStatus= db.insertResult(candidateid,companyid, score, level, total);
 	    if (createStatus) {

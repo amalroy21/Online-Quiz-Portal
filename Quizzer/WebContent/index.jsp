@@ -16,7 +16,7 @@
 		<%
 	}
 %>
-	<div style="" class="wrapper">
+	<div class="wrapper">
 		
 		<form action=Login method=get class="login">
 		<p class="title">Log in</p>
@@ -29,6 +29,7 @@
 			<option value=candidate selected>Candidate</option>
 			<option value=company>Company</option>
 		</select><br><br>
+		<a href="register.jsp">Not registered? Click here to Register Now.</a>
 	    <button type="submit">
 	      <i class="spinner"></i>
 	      <span class="state">Log in</span>
@@ -36,8 +37,6 @@
 	    	
 		</form>
 	</div>
-	
-  </div>
-	
+
 </body>
 </html>

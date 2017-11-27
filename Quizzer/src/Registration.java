@@ -33,8 +33,8 @@ public class Registration extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html");
 		PrintWriter pw=response.getWriter();
-		String user = request.getParameter("uname");    
-	    String pwd = request.getParameter("pass");
+		String user = request.getParameter("username");    
+	    String pwd = request.getParameter("password");
 	    String fname = request.getParameter("fname");
 	    String lname = request.getParameter("lname");
 	    String email = request.getParameter("email");

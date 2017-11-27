@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ page session="false" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Technocrunch</title>
 </head>
 <link href="css/commonStyle.css" rel="stylesheet" type="text/css">
 <body>
@@ -15,10 +16,16 @@
 <table>
 <tbody>
 <%
-	Object ob=session.getAttribute("name");
-	String name="";
-	if(ob!=null){
-		name=(String)ob ;
+	HttpSession sh=request.getSession(false);
+	String name="";	
+	if(sh!=null){
+		Object ob=sh.getAttribute("name");
+		
+		if(ob!=null){
+			name=(String)ob ;
+		}
+	}else{
+		response.sendRedirect("index.jsp");
 	}
 %>
 
@@ -41,12 +48,20 @@
 
 
 <tr>
-<td><a href="viewResults">View My Results</a></td>
+<td><a href="viewResults.jsp">View My Results</a></td>
 </tr>
 
 
 <tr>
 <td><a href="logout.jsp">Logout</a></td>
+</tr>
+
+<tr>
+<td class="quickLink-header_S"><b>Contact us:</b></td>
+</tr>
+
+<tr>
+<td><a href="#">Admin@Technocrunch.com</a></td>
 </tr>
 
 </tbody>

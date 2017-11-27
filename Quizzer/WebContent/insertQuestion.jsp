@@ -22,10 +22,10 @@ function validateForm(theForm){
 <div id="leftSideBar">
     <jsp:include page="leftSideBarComp.jsp"/>
 </div>
-<div class="content">
+<div class="content" style="float:left">
 <center>
 
-<table border="1" width="450px" bgcolor="pink" cellspacing="0" cellpadding="0">
+<table border="1" width="450px" bgcolor="dimgrey" cellspacing="0" cellpadding="0">
   <tr>
     <td width="100%">
       <form method="POST" action="PopulateQBank" onsubmit="return validateForm(this);">
@@ -67,7 +67,11 @@ function validateForm(theForm){
           
           <tr>
             <td width="50%"><b>Question Level</b></td>
-            <td width="50%"><input type="text" name="level" size="10"/> </td>
+            <td width="50%"><select name=level>
+				<option value="1" selected>1</option>
+				<option value="2" >2</option>
+				<option value="3" >3</option>
+			</select><br><br> </td>
           </tr>	
           
           

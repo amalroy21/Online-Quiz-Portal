@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import Domain.Question;
 import SQL.DBA;
@@ -38,11 +39,14 @@ public class QuizHome extends HttpServlet {
 		PrintWriter pw=response.getWriter();
 		ArrayList<Question> Qns=new ArrayList<Question>();
 		DBA db=new DBA();
-		Object ob=request.getAttribute("compid");
+		HttpSession sh=request.getSession(false);
+		Object ob=sh.getAttribute("compid");
 		if(ob!=null){
 			int companyId=(int)ob;
+			System.out.println("Company chosen ="+companyId);
 			Qns=db.getQuestions(companyId);
 			request.setAttribute("QuestionBank", Qns);
+			System.out.println("Qusetionset->"+Qns.toString());
 			RequestDispatcher rd = request.getRequestDispatcher("QuizPage.jsp");
 			rd.include(request, response);
 			

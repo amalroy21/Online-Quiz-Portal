@@ -13,8 +13,10 @@
 <div id="leftSideBar">
     <jsp:include page="leftSideBar.jsp"/>
 </div>
+
 <div class="content">
-<table border="1" style="width:30%" cellpadding="5">
+<center><h3>My Results</h3></center>
+<table border="1" style="" cellpadding="5">
 <thead>
     <tr>
         <th colspan="1">Company ID</th>
@@ -28,6 +30,7 @@
 <% 
 session=request.getSession();
 String companyname="";
+boolean isDataAvailable=false;
 if(session!=null){
 	Object ob=session.getAttribute("id");
 	if(ob!=null){
@@ -37,6 +40,7 @@ if(session!=null){
 			DBA db=new DBA();
 			qz_results=db.getResults(candidateid,"candidate");
 			if(qz_results!=null && qz_results.size()>0){
+				isDataAvailable=true;
 				for(QuizResults rs:qz_results){
 					companyname=db.getCompanyName(rs.getCompanyid());
 					%>
@@ -51,6 +55,11 @@ if(session!=null){
 			}
 		}
 	}
+}
+if(isDataAvailable==false){
+%>
+<tr><td colspan="4" style="text-align:center">No Record Found</td></tr>
+<%
 }
 %>
 </tbody>

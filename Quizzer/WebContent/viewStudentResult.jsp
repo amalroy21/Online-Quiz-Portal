@@ -13,11 +13,11 @@
 <div id="leftSideBar">
     <jsp:include page="leftSideBarComp.jsp"/>
 </div>
-<div class="content">
+<div class="content" style="float:left">
 <table border="1" style="width:30%" cellpadding="5">
 <thead>
     <tr>
-        <th colspan="1">Student ID</th>
+        <th colspan="2">Student Name</th>
     	<th colspan="1">Question Level</th>
     	<th colspan="1">Score</th>
     	<th colspan="1">Max_Marks</th>
@@ -42,7 +42,7 @@ if(session!=null){
 					candidatename=db.getCandidateName(rs.getCandidateid());
 					%>
 					<tr>
-				        <td><%=candidatename %></td>
+				        <td colspan=2><%=candidatename %></td>
 				        <td><%=rs.getQlevel()%></td>
 				        <td><%=rs.getScore() %></td>
 				        <td><%=rs.getTotal() %></td>

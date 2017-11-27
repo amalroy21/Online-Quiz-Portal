@@ -62,8 +62,10 @@ public class DBA {
 				quest.setOptionC(rs.getString(5));
 				quest.setOptionD(rs.getString(6));
 				quest.setAnswer(rs.getString(7));
-				quest.setCompanyId(rs.getInt(8));
-				
+				/*quest.setQnType(rs.getString(8));
+				quest.setQnLevel(""+rs.getInt(9));
+				quest.setCompanyId(rs.getInt(10));*/
+				//System.out.println("Db Access for Questions is fine");
 				Qn.add(quest);
 			}
 			

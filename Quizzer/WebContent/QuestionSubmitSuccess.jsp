@@ -11,13 +11,14 @@
 	<div id="leftSideBar">
 	    <jsp:include page="leftSideBarComp.jsp"/>
 	</div>
-	<div class="content">
-		<p>Question was successfully submitted.</p>
+	<div class="content" style="float:left">
+		<p>Question was added successfully to the question bank.</p>
 		<br>
 		<br>
-		<p><a href="companyHome.jsp">Company Home Page</a>
-		<br>
-		<p><a href="insertQuestion.jsp">Submit more questions</a>
+		<ul>
+		<li><a href="companyHome.jsp">Home Page</a></li>
+		<li><a href="insertQuestion.jsp">Submit more questions</a></li>
+		</ul>
 	</div>
 	
 </body>

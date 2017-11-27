@@ -48,6 +48,7 @@ public class Login extends HttpServlet {
 		int id=-1;
 		id=DB.getUser(username, password, role);
 		sh.setAttribute("id", id);
+		sh.setAttribute("role", role);
 		System.out.println("id="+id);
 		String name="";
 		if(id==-1){
